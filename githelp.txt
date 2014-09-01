@@ -1,0 +1,10 @@
+-> config cshrc in bash
+nano ~/.profile
+alias l="ls -ls"
+alias githelp="cat ~/share/githelp.txt"
+
+-> do not display untracked files
+git config status.showuntrackedfiles no
+
+-> upload repository to github
+git push -u origin master
