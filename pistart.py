@@ -1,3 +1,14 @@
+# from time import sleep
+# import serial
+# ser = serial.Serial("/dev/ttyAMA0")
+# # ser.write("UART the Font\n")
+# while True:
+  # ser.write("aaaaa\n")
+  # sleep(1)
+# read = ser.readline()
+# print read
+# ser.close()
+
 #!/usr/bin/env python 
 
 # Imports
@@ -101,26 +112,42 @@ class BLUETOOTH:
 
 
 if __name__ == '__main__':
-  GPIO.setmode(GPIO.BCM)
-  LED1 = LED(18)
-  LED2 = LED(23)
-  LED3 = LED(24)
-  BTN  = BUTTON(25)
-  BT = BLUETOOTH(14, 15)
+  # GPIO.setmode(GPIO.BCM)
+  # LED1 = LED(18)
+  # LED2 = LED(23)
+  # LED3 = LED(24)
+  # BTN  = BUTTON(25)
+  # BT = BLUETOOTH(14, 15)
   # BT.start()
 
   print 'Use CTRL-C to end loop'
   try:
+    print 'debug1'
+    # port = serial.Serial("/dev/ttyAMA0", baudrate=115200, timeout=3.0)
+    port = serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=3.0)
+    # ser = serial.Serial("/dev/ttyAMA0")
+    # # ser.write("UART the Font\n")
+    # while True:
+      # ser.write("aaaaa\n")
+      # sleep(1)
+    # read = ser.readline()
+    # print read
+    # ser.close()
+    print 'debug2'
     while True:
+      print 'TX: AT'
+      port.write("AT")
+      rcv = port.read(2)
+      print "RX: "+rcv
       # BTN.waitPress() # wait until key is pressed
       # LED1.toggle()
-      BT.send('AT')
+      # BT.send('AT')
       # print "Button has been pressed %s times" % BTN.getCount()
       # if BTN.isOdd():
         # LED2.on()
       # else:
         # LED2.off()
-      sleep(.5)
+      # sleep(.5)
       # print chr(27) + "[2J"
   except KeyboardInterrupt:
     print '\nInterrupt caught'
