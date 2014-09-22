@@ -63,7 +63,7 @@ class BUTTON:
 
   def waitPress(self):
     while GPIO.input(self.pin):
-      sleep(.1)
+      sleep(.05)
     print 'Button Pressed'
 
   def getCount(self):
@@ -136,8 +136,8 @@ if __name__ == '__main__':
     print 'debug2'
     while True:
       print 'TX: AT'
-      port.write("AT")
-      rcv = port.read(2)
+      port.write("AT\n")
+      rcv = port.readline()
       print "RX: "+rcv
       # BTN.waitPress() # wait until key is pressed
       # LED1.toggle()
